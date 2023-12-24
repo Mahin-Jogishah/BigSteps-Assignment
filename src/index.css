@@ -15,18 +15,7 @@ body {
   background-size: 100%;
 }
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 200px;
   display: none;
-}
-::-webkit-scrollbar-track {
-  background: var(--scroll-bg);
-  border-radius: 15px;
-  height: 200px;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--scroll-color);
-  border-radius: 3px;
 }
 
 /* Home Start------ */
@@ -76,11 +65,21 @@ body {
 /* Home End------ */
 
 /* Pokemon Cards Start------ */
+.pokemon-card {
+  height: 290px;
+  width: 230px;
+}
 .pokemon-card img {
-  width: 175px;
-  height: 175px;
+  width: 170px;
+  height: 170px;
+}
+.pokemon-card:hover img {
+  width: 185px;
+  height: 180px;
+  transform: 5s;
 }
 .pokemon-card {
+  cursor: pointer;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
