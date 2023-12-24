@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPokemonList, fetchPokemonTypes } from '../../redux/actions/PokemonAction';
-import { PokemonCards } from '../../components';
+import { PokemonCards, SelectComponent, InputComponent } from '../../components';
 
 export default function Pokemon() {
     const dispatch = useDispatch();
@@ -26,44 +26,40 @@ export default function Pokemon() {
     };
 
     return (
-        <>
+        <React.Fragment>
             <div className='home-page'>
                 <div className='bg-img'>
                     <img src="../img/bg-1.jpg" alt="" />
                 </div>
-                <div className='d-flex position-sticky z-1 top-0 bg-white flex-wrap justify-content-between p-3 px-4'>
-                    <div className='mt-2'>
-                        <h6>Search your Fav Pokemon</h6>
-                        <input
-                            className='p-2 w-100 rounded-2 border'
-                            type='text'
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            placeholder='Enter Pokemon Name'
-                        />
+                <div className='position-sticky top-0 z-1'>
+                    <div className='logo p-2 px-4 text-center'>
+                        <img title="Reset Game" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2000px-International_Pok%C3%A9mon_logo.svg.png" alt="Pokemon" />
                     </div>
-                    <div className='mt-2'>
-                        <h6>Select Pokemon Type</h6>
-                        <select
-                            className='p-2 w-100 rounded-2 border'
-                            value={selectedType}
-                            onChange={handleTypeChange}
-                        >
-                            <option value=''>All Types</option>
-                            {pokemonTypes && pokemonTypes.map((type) => (
-                                <option key={type} value={type}>
-                                    {type}
-                                </option>
-                            ))}
-                        </select>
+                    <div className='input-field d-flex justify-content-center flex-wrap'>
+                        <div className='m-2'>
+                            <InputComponent
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                placeholder='🔍 Search Your Favorite Pokemon'
+                            />
+                        </div>
+                        <div className='m-2'>
+                            <SelectComponent
+                                value={selectedType}
+                                onChange={handleTypeChange}
+                                options={pokemonTypes}
+                            />
+                        </div>
                     </div>
                 </div>
-                <div className='d-flex p-4 flex-wrap justify-content-center'>
+                <div className='pokemon-list d-flex p-4 flex-wrap justify-content-center'>
                     {filteredPokemonList.map((pokemon, index) => (
-                        <PokemonCards key={index} name={pokemon.name} types={pokemon.types} stats={pokemon.stats} imageUrl={pokemon.imageUrl} />
+                        <div>
+                            <PokemonCards key={index} name={pokemon.name} types={pokemon.types} stats={pokemon.stats} imageUrl={pokemon.imageUrl} />
+                        </div>
                     ))}
                 </div>
             </div>
-        </>
+        </React.Fragment>
     );
 }
