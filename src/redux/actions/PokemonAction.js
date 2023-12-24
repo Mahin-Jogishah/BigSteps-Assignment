@@ -15,7 +15,7 @@ export const fetchPokemonTypes = createAsyncThunk('fetchPokemonTypes', async () 
 
 export const fetchPokemonList = createAsyncThunk('fetchPokemonList', async () => {
     try {
-        const response = await fetch(`${POKEMON}pokemon?limit=30&offset=0`);
+        const response = await fetch(`${POKEMON}pokemon?limit=200&offset=0`);
         const data = await response.json();
         const pokemonList = await Promise.all(
             data.results.map(async (pokemon) => {

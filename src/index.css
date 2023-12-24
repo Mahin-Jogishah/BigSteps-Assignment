@@ -61,3 +61,13 @@ body {
   font-weight: 500;
 }
 /* Pokemon Cards End------ */
+
+/* Pokemon Modal Start------ */
+.pokemon-modal img {
+  width: 150px;
+  height: 150px;
+}
+.pokemon-modal {
+  text-transform: capitalize;
+}
+/* Pokemon Modal End------ */

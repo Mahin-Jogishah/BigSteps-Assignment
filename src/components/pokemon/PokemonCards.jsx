@@ -17,10 +17,10 @@ export default function PokemonCards({ name, imageUrl, types, stats }) {
         <>
             <div className='pokemon-card text-black rounded-4 p-4 m-2' onClick={handleCardClick}>
                 <img src={imageUrl} alt={name} />
-                <li className='fs-3'>{name}</li>
+                <li className='fs-2'>{name}</li>
                 <li>{types.join(', ')}</li>
             </div>
-            <PokemonModal show={show} handleClose={handleClose} name={name} types={types} stats={stats} />
+            <PokemonModal show={show} handleClose={handleClose} name={name} types={types} stats={stats} imageUrl={imageUrl} />
         </>
     );
 }
